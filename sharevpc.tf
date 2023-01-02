@@ -1,35 +1,33 @@
 
-# Activate var.host_project_id as host project
+# Activate var.project_id as host project
 resource "google_compute_shared_vpc_host_project" "host" {
-  project = var.host_project_id
+  project = var.project_id
 }
 
 
-# Below example of creating service project and sharing "prod-k8s-network" subnet with service project. Additional users are given access to shared subnet.
+# Below example of creating service project and sharing "prod-k8s-network" subnet with service project. 
+# Additional users are given access to shared subnet.
 module "prod-project" {
-  source = "./modules/Service_Project"
-  service_project_name = "project-prod-372411"
-  region = "us-west1"
-  subnets_to_share = ["prod-k8s-network", ]
+  source = "./modules/Service-Project"
+  service_project_name = var.prod_project_name
+  region = var.region
+  subnets_to_share = [var.prod_net_name, ]
   enable_k8s = true
-  additional_service_users = ["user:prod@vettom.uk",
-            "serviceAccount:terraform-proj-project@project-prod-372411.iam.gserviceaccount.com",
+  additional_service_users = ["serviceAccount:masterproj-new-automation@master-project-373217.iam.gserviceaccount.com",
             ]   
   host_project = google_compute_shared_vpc_host_project.host.project
 
 }
 
 
-
-module "dev-project" {
-  source = "./modules/Service_Project"
-  service_project_name = "project-dev"
-  region = "us-west1"
-  subnets_to_share = ["prod-k8s-network", ]
-  enable_k8s = true
-  additional_service_users = ["user:prod@vettom.uk",
-            "serviceAccount:terraform-proj-project@project-prod-372411.iam.gserviceaccount.com",
-            ]   
+# Below example service project, but no K8s or additional users.
+module "stage-project" {
+  source = "./modules/Service-Project"
+  service_project_name = var.stage_project_name
+  region = var.region
+  subnets_to_share = [var.stage_net_name, ]
+  enable_k8s = false
+  additional_service_users = []   
   host_project = google_compute_shared_vpc_host_project.host.project
 
 }

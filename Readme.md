@@ -1,13 +1,29 @@
 # GCP Shared VPC using Terraform
+In this example I am manually creating "master project" (Shared VPC) and couple of service projects.  Shared VPC will have 3 subnets. Individual service projects are given access to specific subnets in Shared VPC.
+
+## 3 stages of setting up shared VPC
 - Activate a project as host project
 - Add service project to Host project
-- Share specific subnet with attached project
+- Share specific subnet with attached project by creating iam binding
 
-> By default only google created service accounts are provided access.
+## Pre-requisites
+- Host and service projects created
+- VPC and subnets created in Host project. 
+- Billing Account attached to Project
+- Enable following API
+	- Compute Engine API 
+	- Kubernetes Engine API
+	-Cloud Resource Manager API (Master and service Proj)
 
-# Assumptions
-- Projects must exist and necessary API (compute and K8s) enabled
-- Host Project has VPC with at least one subnet for sharing.
+
+# Preparing environment
+- In **Host Project** create service account for automation. 
+- Generate authentication key. Here I am creating json format key. 
+- Assign *Editor* role to Service account in Host Project
+- At ***Organisation*** IAM, add following permission to service account
+	- Compute Shared VPC Admin
+	- Project IAM Admin
+
 
 # Required inputs
 - host_project_id  			: ID of project to become Host Project
@@ -17,6 +33,8 @@
 - subnets_to_share      	: List of Host project subnets to be shared
 - enable_k8s				: true/false for k8s resources
 - additional_service_users 	: Additional custom created user/service accounts requiring access.
+
+> Add automation user to additional users.
 
 # Usage
 
@@ -33,5 +51,10 @@
 		  host_project = google_compute_shared_vpc_host_project.host.project
 		}
 ```
+
+
+
+
+
 
 

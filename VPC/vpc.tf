@@ -1,12 +1,12 @@
+#  Check VPC module   https://github.com/terraform-google-modules
+
 module "network" {
   source       = "terraform-google-modules/network/google"
   version      = "6.0.0"
-  project_id   = data.google_project.project.name
+  project_id   = var.project_id
   network_name = var.network_name
   routing_mode = "GLOBAL"
   # shared_vpc_host = "true"
-
-
 
   subnets = [
     {
@@ -49,7 +49,18 @@ module "network" {
       },
     ]
 
-    subnet-02 = []
+    stage-k8s-network = [
+      {
+        range_name    = "stage-pod-net-01"
+        ip_cidr_range = var.stage_pod_subnet
+      },
+      {
+        range_name    = "stage-network-service-01"
+        ip_cidr_range = var.stage_svc_subnet
+      },
+      
+
+      ]
   }
 
 

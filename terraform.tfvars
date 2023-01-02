@@ -1,0 +1,6 @@
+project_id      = "master-project-373217"
+prod_project_name = "project-production-k8s"
+stage_project_name = "project-stage-k8s"
+region          = "us-west1"
+prod_net_name   = "prod-k8s-network"
+stage_net_name  = "stage-k8s-network"
