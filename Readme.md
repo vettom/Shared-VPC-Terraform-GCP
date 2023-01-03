@@ -1,10 +1,11 @@
 # GCP Shared VPC using Terraform
-In this example I am manually creating "master project" (Shared VPC) and couple of service projects.  Shared VPC will have 3 subnets. Individual service projects are given access to specific subnets in Shared VPC.
+Complete shared VPC configuration with Terraform. VPC folder contains code required to configure VPC and subnets if you wish to use.
+ 
+- Create Host Project
+- IAM roles required for configuration
+- Attach service project
+- Share **Individual subnet** with service Project
 
-## 3 stages of setting up shared VPC
-- Activate a project as host project
-- Add service project to Host project
-- Share specific subnet with attached project by creating iam binding
 
 ## Pre-requisites
 - Host and service projects created
@@ -13,7 +14,7 @@ In this example I am manually creating "master project" (Shared VPC) and couple 
 - Enable following API
 	- Compute Engine API 
 	- Kubernetes Engine API
-	-Cloud Resource Manager API (Master and service Proj)
+	- Cloud Resource Manager API (Master and service Proj)
 
 
 # Preparing environment
