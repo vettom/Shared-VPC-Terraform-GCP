@@ -4,12 +4,12 @@ Complete shared VPC configuration with Terraform. VPC folder contains code requi
 - Create Host Project
 - IAM roles required for configuration
 - Attach service project
-- Share **Individual subnet** with service Project
+- Share ***Individual subnet*** with service Project
 
 
 ## Pre-requisites
-- Host and service projects created
-- VPC and subnets created in Host project. 
+- At least 2 projects exists.
+- VPC and subnets created in project that will be Host Project. 
 - Billing Account attached to Project
 - Enable following API
 	- Compute Engine API 
