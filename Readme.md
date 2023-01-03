@@ -5,6 +5,7 @@ Complete shared VPC configuration with Terraform. VPC folder contains code requi
 - IAM roles required for configuration
 - Attach service project
 - Share ***Individual subnet*** with service Project
+- Manager which accounts can access shared subnet
 
 
 ## Pre-requisites
@@ -17,7 +18,7 @@ Complete shared VPC configuration with Terraform. VPC folder contains code requi
 	- Cloud Resource Manager API (Master and service Proj)
 
 
-# Preparing environment
+## Preparing environment
 - In **Host Project** create service account for automation. 
 - Generate authentication key. Here I am creating json format key. 
 - Assign *Editor* role to Service account in Host Project
@@ -26,9 +27,9 @@ Complete shared VPC configuration with Terraform. VPC folder contains code requi
 	- Project IAM Admin
 
 
-# Required inputs
+## Required inputs
 - host_project_id  			: ID of project to become Host Project
-### service project module
+#### service project module
 - service_project_name  	: Name of the service project to be added
 - Region 					: Region in which to create
 - subnets_to_share      	: List of Host project subnets to be shared
@@ -37,7 +38,7 @@ Complete shared VPC configuration with Terraform. VPC folder contains code requi
 
 > Add automation user to additional users.
 
-# Usage
+## Usage
 
 ```bash
 		module "<service project name>" {
