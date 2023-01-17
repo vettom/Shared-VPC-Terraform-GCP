@@ -2,7 +2,7 @@
 
 # A service project gains access to network resources provided by its
 # associated host project.
-resource "google_compute_shared_vpc_service_project" "prod-service-project" {
+resource "google_compute_shared_vpc_service_project" "service-project" {
   host_project    = var.host_project
   service_project = var.service_project_name
 }

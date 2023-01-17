@@ -15,6 +15,7 @@ module "network" {
       subnet_region         = var.region
       subnet_private_access = "true"
       subnet_flow_logs      = "true"
+      description = "Subnet for Production workload including K8s"
     },
     {
       subnet_name   = var.stage_net_name
@@ -22,13 +23,14 @@ module "network" {
       subnet_region = var.region
       subnet_private_access = "true"
       # subnet_flow_logs      = "true"
-      description = "This subnet has a description"
+      description = "Subnet for Stage workload including K8s"
     },
     {
       subnet_name   = var.dev_net_name
       subnet_ip     = var.dev_cidr
       subnet_region = var.region
       subnet_private_access = "true"
+      description = "Subnet for Dev VMS workload "
       # subnet_flow_logs      = "true"
       # subnet_flow_logs          = "true"
       # subnet_flow_logs_interval = "INTERVAL_10_MIN"
