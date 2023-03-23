@@ -19,7 +19,7 @@ resource "google_compute_subnetwork_iam_binding" "network_users" {
   region     = var.region
   subnetwork = each.value
   role       = "roles/compute.networkUser"
-    members = local.all_compute_users
+    members = var.enable_k8s ? local.all_k8s_users : local.all_compute_users
 }
 
 
