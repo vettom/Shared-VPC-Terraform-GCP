@@ -1,4 +1,4 @@
-<a href="https://vettom.github.io/"><img src="https://vettom.github.io/img/vettom-banner.jpg" alt="vettom.github.io" ></a>
+![vettom.pages.dev banner](https://vettom-images.s3.eu-west-1.amazonaws.com/logo/vettom-banner.jpg)
 # GCP Shared VPC using Terraform
 Complete shared VPC configuration with Terraform. VPC folder contains code required to configure VPC and subnets if you wish to use.
  
